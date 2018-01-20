@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header correctly 1`] = `
+<styled.nav>
+  <styled.ul>
+    <styled.li>
+      <Styled(NavLink)
+        activeClassName="nav-item-active"
+        exact={true}
+        to="/"
+      >
+        <styled.span>
+          Home
+        </styled.span>
+      </Styled(NavLink)>
+    </styled.li>
+    <styled.li>
+      <Styled(NavLink)
+        activeClassName="nav-item-active"
+        exact={true}
+        to="/signup"
+      >
+        <styled.span>
+          Sign Up
+        </styled.span>
+      </Styled(NavLink)>
+    </styled.li>
+    <styled.li>
+      <Styled(NavLink)
+        activeClassName="nav-item-active"
+        exact={true}
+        to="/signin"
+      >
+        <styled.span>
+          Sign In
+        </styled.span>
+      </Styled(NavLink)>
+    </styled.li>
+  </styled.ul>
+</styled.nav>
+`;
