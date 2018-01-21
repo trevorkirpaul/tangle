@@ -1,41 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render Header correctly 1`] = `
-<styled.nav>
-  <styled.ul>
-    <styled.li>
-      <Styled(NavLink)
-        activeClassName="nav-item-active"
-        exact={true}
-        to="/"
-      >
-        <styled.span>
-          Home
-        </styled.span>
-      </Styled(NavLink)>
-    </styled.li>
-    <styled.li>
-      <Styled(NavLink)
-        activeClassName="nav-item-active"
-        exact={true}
-        to="/signup"
-      >
-        <styled.span>
-          Sign Up
-        </styled.span>
-      </Styled(NavLink)>
-    </styled.li>
-    <styled.li>
-      <Styled(NavLink)
-        activeClassName="nav-item-active"
-        exact={true}
-        to="/signin"
-      >
-        <styled.span>
-          Sign In
-        </styled.span>
-      </Styled(NavLink)>
-    </styled.li>
-  </styled.ul>
-</styled.nav>
+<nav>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <FlatButton
+      disabled={false}
+      fullWidth={false}
+      label="Tangle"
+      labelPosition="after"
+      labelStyle={Object {}}
+      onKeyboardFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTouchStart={[Function]}
+      primary={false}
+      secondary={false}
+      style={
+        Object {
+          "margin": "5px",
+        }
+      }
+    />
+  </Link>
+  <Link
+    replace={false}
+    to="/signout"
+  >
+    <FlatButton
+      disabled={false}
+      fullWidth={false}
+      label="Sign Out"
+      labelPosition="after"
+      labelStyle={Object {}}
+      onKeyboardFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTouchStart={[Function]}
+      primary={false}
+      secondary={false}
+    />
+  </Link>
+</nav>
 `;

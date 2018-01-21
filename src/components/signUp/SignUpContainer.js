@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signUp } from '../../actions/auth';
+
 import styled from 'styled-components';
 
 const Input = styled.input`
@@ -6,7 +9,7 @@ const Input = styled.input`
   margin: 5px;
 `;
 
-export default class SignUp extends Component {
+export class SignUp extends Component {
   constructor(props) {
     super(props);
 
@@ -28,7 +31,7 @@ export default class SignUp extends Component {
     }));
   };
   handleSubmit = () => {
-    console.log(this.state);
+    this.props.signUp(this.state);
   };
   render() {
     return (
@@ -74,3 +77,8 @@ export default class SignUp extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => ({
+  signUp: fields => dispatch(signUp(fields)),
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);

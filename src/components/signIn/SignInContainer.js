@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import SignInForm from './SignInForm';
+import { connect } from 'react-redux';
+import { signIn } from '../../actions/auth';
 
-export default class SignInContainer extends Component {
+export class SignInContainer extends Component {
   render() {
     return (
       <div>
@@ -10,3 +12,9 @@ export default class SignInContainer extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  signIn: fields => dispatch(signIn(fields)),
+});
+
+export default connect(null, mapDispatchToProps)(SignInContainer);

@@ -1,12 +1,77 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signIn } from '../../actions/auth';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import styled from 'styled-components';
 
-export default () => {
-  return (
-    <form>
-      <input type="text" name="email" placeholder="email" />
-      <input type="password" name="password" placeholder="password" />
+const Wrapper = styled.form``;
+const InputWrapper = styled.div``;
 
-      <button type="submit">Sign In</button>
-    </form>
-  );
-};
+export const capFirstLetter = string =>
+  string.charAt(0).toUpperCase() + string.slice(1);
+
+export class SignInForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      errorEmail: '',
+      errorPassword: '',
+    };
+  }
+  handleOnChange = e => {
+    const fieldName = e.target.name;
+    const value = e.target.value;
+    const FieldName = capFirstLetter(fieldName);
+    const errorFieldName = `error${FieldName}`;
+    this.setState(() => ({
+      [fieldName]: value,
+      [errorFieldName]: '',
+    }));
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    // if field is empty
+    // set error state and update field to show error
+    email === '' && this.setState(() => ({ errorEmail: 'Required' }));
+    password === '' && this.setState(() => ({ errorPassword: 'Required' }));
+  };
+  render() {
+    return (
+      <Wrapper>
+        <InputWrapper>
+          <TextField
+            type="text"
+            name="email"
+            floatingLabelText="email"
+            errorText={this.state.errorEmail}
+            onChange={this.handleOnChange}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <TextField
+            type="password"
+            name="password"
+            floatingLabelText="password"
+            errorText={this.state.errorPassword}
+            onChange={this.handleOnChange}
+          />
+        </InputWrapper>
+        <RaisedButton
+          primary={true}
+          onClick={this.handleSubmit}
+          label="Sign In"
+        />
+      </Wrapper>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  signIn: fields => dispatch(signIn(fields)),
+});
+
+export default connect(null, mapDispatchToProps)(SignInForm);

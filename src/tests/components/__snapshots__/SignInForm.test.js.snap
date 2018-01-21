@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render container correctly 1`] = `
+<styled.form>
+  <styled.div>
+    <TextField
+      disabled={false}
+      errorText=""
+      floatingLabelFixed={false}
+      floatingLabelText="email"
+      fullWidth={false}
+      multiLine={false}
+      name="email"
+      onChange={[Function]}
+      rows={1}
+      type="text"
+      underlineShow={true}
+    />
+  </styled.div>
+  <styled.div>
+    <TextField
+      disabled={false}
+      errorText=""
+      floatingLabelFixed={false}
+      floatingLabelText="password"
+      fullWidth={false}
+      multiLine={false}
+      name="password"
+      onChange={[Function]}
+      rows={1}
+      type="password"
+      underlineShow={true}
+    />
+  </styled.div>
+  <RaisedButton
+    disabled={false}
+    fullWidth={false}
+    label="Sign In"
+    labelPosition="after"
+    onClick={[Function]}
+    primary={true}
+    secondary={false}
+  />
+</styled.form>
+`;
