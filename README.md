@@ -37,3 +37,36 @@ I was hoping to gain more insight on how to test actions that invlove multiple d
 I also added a few features to this app, after I finished the section of the course.
 
 Users can now sign in as well as the sign in persisting thanks to localStorage. Users can also now create a post.
+
+#### Jan 22nd 2018
+
+I've been trying to add the basics of all features as quickly as I can. I think I'm using container/presnetaional components much better this time and I definitely have a better grasp of seperating concerns.
+
+I'm trying to code "defensively" and this pattern really makes it easier. ALl of my presentational components have simialiar patterns where they'll render a loading view or error view if conditions are present.
+
+One thing that I've not been able to solve has been immediate reloads of certain components.
+
+One example is the DashboardContainer component. On `componentDidMount()` I have it fetching the user profile from the server. The server verifies and finds the userID from the JWT that gets sent with the request.
+
+On the lifecyle method, I'm pulling the JWT from redux so I originally had it coded to only fetch if the token was present. It will always be already present unless the Dashboard component is the first to load, like if a hard reload was used.
+
+Currently, I have it set up to that the token variable first checks redux then checks localStorage:
+
+```javascript
+const token = this.props.auth.token || localStorage.getItem("token");
+token && this.props.fetchUserInfo(token);
+```
+
+This is a simple solution but I wanted to use `componentWillRecieveProps()` to be a backup, where it would fetch if the dashboard doesn't exist but the token does. I ran into some endless loops so I used the simple solution for now.
+
+Regardless of all this work, I do plan on using a HoC for all 'protected routes' so they aren't accessible if a token isn't present or a user isn't signed in
+
+It is good to have multiple lines of defense, just in case, so I'll also create a component to render if an edge case arises where DashboardContainer.js mounts without requesting the user profile.
+
+Feature wise, I need to implement the comment system, like/dislike system, and update/delete user accounts. After that I'll start fleshing out each feature whiles also adding styling.
+
+I'm currently using Material-UI since I know it well enough to use i pretty quickly.
+
+I need to figure out if I want to add in Redux-Form or an alternative sicne I have some forms I want to convert to reusable components.
+
+Hopefully I can finish all of the features today as well as some syling.
