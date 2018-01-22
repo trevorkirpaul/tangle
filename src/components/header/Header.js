@@ -25,6 +25,9 @@ export default ({ auth }) => {
         <Link to="/posts">
           <FlatButton label="View Posts" />
         </Link>
+        <Link to="/dashboard">
+          <FlatButton label="dashboard" />
+        </Link>
         <Link to="/signout">
           <FlatButton label="Sign Out" />
         </Link>
