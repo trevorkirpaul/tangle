@@ -34,11 +34,25 @@ export default (state = defaultState, action) => {
         error: action.error,
         posts: action.posts,
       };
+    case 'POSTS:RECIEVE_ONE':
+      return {
+        ...state,
+        loading: action.loading,
+        error: action.error,
+        post: action.post,
+      };
     case 'POSTS:RECIEVE_FAIL':
       return {
         ...state,
         loading: action.loading,
         error: action.error,
+      };
+    case 'POSTS:CLEAR_SINGLE_POST':
+      return {
+        ...state,
+        loading: action.loading,
+        error: action.error,
+        post: action.post,
       };
     default:
       return state;

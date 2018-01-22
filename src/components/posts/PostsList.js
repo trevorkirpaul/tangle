@@ -1,13 +1,14 @@
 import React from 'react';
 import Progress from 'material-ui/CircularProgress';
-
+import { Link } from 'react-router-dom';
 export default ({ posts, loading, error }) => {
   if (posts) {
     return (
       <ul>
         {posts.map(post => (
           <li key={post._id}>
-            {post.title} by {post.author.email}
+            <Link to={`/post/${post._id}`}>{post.title}</Link> by{' '}
+            {post.author.email}
           </li>
         ))}
       </ul>
