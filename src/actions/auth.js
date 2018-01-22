@@ -44,15 +44,16 @@ export const signIn = fields => {
     });
     axios
       .post(USER_SIGNIN, { ...fields })
-      .then(({ data }) =>
+      .then(({ data }) => {
+        localStorage.setItem('token', data.token);
         dispatch({
           type: 'AUTH:SUCCESSFUL_SIGN_IN',
           loading: false,
           error: false,
           token: data.token,
           userInfo: data.userInfo,
-        })
-      )
+        });
+      })
       .catch(() =>
         dispatch({
           type: 'AUTH:FAILED_SIGN_IN',
