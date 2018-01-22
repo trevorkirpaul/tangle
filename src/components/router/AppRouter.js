@@ -5,7 +5,7 @@ import Welcome from '../welcome/Welcome';
 import SignUp from '../signUp/SignUpContainer';
 import SignIn from '../signIn/SignInContainer';
 import SignOut from '../signOut/SignOut';
-
+import CreatePost from '../createPost/CreatePostContainer';
 export default () => {
   return (
     <BrowserRouter>
@@ -16,6 +16,7 @@ export default () => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/signout" component={SignOut} />
+          <Route exact path="/createpost" component={CreatePost} />
         </Switch>
       </div>
     </BrowserRouter>

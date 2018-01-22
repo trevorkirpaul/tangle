@@ -19,6 +19,9 @@ export default ({ auth }) => {
         <Link to="/">
           <FlatButton label="Tangle" style={buttonStyle} />
         </Link>
+        <Link to="/createpost">
+          <FlatButton label="Create Post" />
+        </Link>
         <Link to="/signout">
           <FlatButton label="Sign Out" />
         </Link>

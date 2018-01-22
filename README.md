@@ -27,3 +27,13 @@ I've been trying to implement tests for my actions but it's proven to be too com
 I have a udemy course where I can review testing in detail. It's a section that I previously skipped and it should only take one day to complete if I focus.
 
 This project is on hiatus until I complete that section.
+
+#### update:
+
+I finished the section and it helped...a tiny bit. The course was using mocha and chai but I now realize it's not a huge issue since tests are basically created the same. I think the few differences include the mid of assertions.
+
+I was hoping to gain more insight on how to test actions that invlove multiple dispatches being sent. I think I just need to break down what I decide to test but it' something I'm still looking into.
+
+I also added a few features to this app, after I finished the section of the course.
+
+Users can now sign in as well as the sign in persisting thanks to localStorage. Users can also now create a post.
