@@ -22,6 +22,9 @@ export default ({ auth }) => {
         <Link to="/createpost">
           <FlatButton label="Create Post" />
         </Link>
+        <Link to="/posts">
+          <FlatButton label="View Posts" />
+        </Link>
         <Link to="/signout">
           <FlatButton label="Sign Out" />
         </Link>
@@ -33,6 +36,9 @@ export default ({ auth }) => {
         <Wrapper>
           <Link to="/">
             <FlatButton label="Tangle" style={buttonStyle} />
+          </Link>
+          <Link to="/posts">
+            <FlatButton label="View Posts" />
           </Link>
           <Link to="/signup">
             <FlatButton label="Sign Up" style={buttonStyle} />

@@ -27,6 +27,24 @@ exports[`should render Header correctly 1`] = `
   </Link>
   <Link
     replace={false}
+    to="/createpost"
+  >
+    <FlatButton
+      disabled={false}
+      fullWidth={false}
+      label="Create Post"
+      labelPosition="after"
+      labelStyle={Object {}}
+      onKeyboardFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onTouchStart={[Function]}
+      primary={false}
+      secondary={false}
+    />
+  </Link>
+  <Link
+    replace={false}
     to="/signout"
   >
     <FlatButton
