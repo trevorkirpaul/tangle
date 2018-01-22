@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { signIn } from '../../actions/auth';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import styled from 'styled-components';
@@ -11,7 +9,7 @@ const InputWrapper = styled.div``;
 export const capFirstLetter = string =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
-export class SignInForm extends Component {
+export default class SignInForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,6 +36,10 @@ export class SignInForm extends Component {
     // set error state and update field to show error
     email === '' && this.setState(() => ({ errorEmail: 'Required' }));
     password === '' && this.setState(() => ({ errorPassword: 'Required' }));
+
+    if (email !== '' && password !== '') {
+      this.props.handleSignIn({ email, password });
+    }
   };
   render() {
     return (
@@ -69,9 +71,3 @@ export class SignInForm extends Component {
     );
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  signIn: fields => dispatch(signIn(fields)),
-});
-
-export default connect(null, mapDispatchToProps)(SignInForm);
