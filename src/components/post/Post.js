@@ -4,7 +4,14 @@ import PostDetails from './PostDetails';
 import Comments from './Comments';
 import AddCommentContainer from '../addComment/AddCommentContainer';
 
-export default ({ post, comments, loading, error, handleLocalAdd }) => {
+export default ({
+  post,
+  comments,
+  loading,
+  error,
+  handleLocalAdd,
+  handleLocalDelete,
+}) => {
   if (loading) {
     return (
       <div>
@@ -15,7 +22,7 @@ export default ({ post, comments, loading, error, handleLocalAdd }) => {
     return (
       <div>
         <PostDetails title={post.title} author={post.author} body={post.body} />
-        <Comments comments={comments} />
+        <Comments comments={comments} handleLocalDelete={handleLocalDelete} />
         <AddCommentContainer
           postID={post._id}
           handleLocalAdd={handleLocalAdd}

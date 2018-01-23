@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { COMMENT } from '../config';
+import { COMMENT, COMMENT_DELETE } from '../config';
 
 export const createComment = (token, postID, comment) => {
   return dispatch => {
@@ -20,6 +20,33 @@ export const createComment = (token, postID, comment) => {
       })
       .catch(() => {
         return dispatch({
+          type: 'COMMENT:ERROR',
+          loading: false,
+          error: true,
+        });
+      });
+  };
+};
+
+export const deleteComment = (token, commentID) => {
+  return dispatch => {
+    dispatch({
+      type: 'COMMENT:LOADING',
+      loading: true,
+      error: false,
+    });
+    axios
+      .post(COMMENT_DELETE, { token, commentID })
+      .then(({ data }) => {
+        return dispatch({
+          type: 'COMMENT:SUCCESSFUL_DELETE',
+          loading: false,
+          error: false,
+          deleted: data.commentDeleted,
+        });
+      })
+      .catch(() => {
+        dispatch({
           type: 'COMMENT:ERROR',
           loading: false,
           error: true,

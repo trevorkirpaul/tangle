@@ -21,12 +21,18 @@ export class PostContainer extends Component {
       ...commentInfo,
       _id: uuid(),
     };
-    console.log(comment);
     this.setState(prevState => ({
       comments: [...currentComments, comment],
     }));
   };
-
+  handleLocalDeleteComment = commentID => {
+    const comments = this.state.comments.filter(
+      comment => comment._id !== commentID
+    );
+    this.setState(() => ({
+      comments,
+    }));
+  };
   componentDidMount() {
     const postID = this.props.match.params.id;
     this.props.fetchOnePost(postID);
@@ -55,6 +61,7 @@ export class PostContainer extends Component {
           error={this.state.error}
           loading={this.state.loading}
           handleLocalAdd={this.handleLocalAddComment}
+          handleLocalDelete={this.handleLocalDeleteComment}
         />
       </div>
     );

@@ -15,6 +15,13 @@ export default (state = defaultState, action) => {
         error: action.error,
         comment: action.comment,
       };
+    case 'COMMENT:SUCCESSFUL_DELETE':
+      return {
+        ...state,
+        loading: action.loading,
+        error: action.error,
+        deleted: action.deleted,
+      };
     case 'COMMENT:ERROR':
       return {
         ...state,
