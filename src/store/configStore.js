@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import auth from '../reducers/auth';
 import posts from '../reducers/posts';
 import dashboard from '../reducers/dashboard';
+import comments from '../reducers/comments';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -14,6 +15,7 @@ export default () => {
       auth,
       posts,
       dashboard,
+      comments,
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

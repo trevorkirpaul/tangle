@@ -41,6 +41,7 @@ export default (state = defaultState, action) => {
         error: action.error,
         post: action.post,
       };
+
     case 'POSTS:RECIEVE_FAIL':
       return {
         ...state,

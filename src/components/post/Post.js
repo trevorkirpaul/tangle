@@ -1,7 +1,10 @@
 import React from 'react';
 import Progress from 'material-ui/CircularProgress';
+import PostDetails from './PostDetails';
+import Comments from './Comments';
+import AddCommentContainer from '../addComment/AddCommentContainer';
 
-export default ({ post, loading, error }) => {
+export default ({ post, comments, loading, error, handleLocalAdd }) => {
   if (loading) {
     return (
       <div>
@@ -11,9 +14,12 @@ export default ({ post, loading, error }) => {
   } else if (post) {
     return (
       <div>
-        <h1>{post.title}</h1>
-        <h3>by {post.author.email}</h3>
-        <p>{post.body}</p>
+        <PostDetails title={post.title} author={post.author} body={post.body} />
+        <Comments comments={comments} />
+        <AddCommentContainer
+          postID={post._id}
+          handleLocalAdd={handleLocalAdd}
+        />
       </div>
     );
   } else if (error) {

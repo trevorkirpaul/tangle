@@ -2,22 +2,39 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchOnePost } from '../../actions/posts';
 import Post from './Post';
+import uuid from 'uuid';
 
 export class PostContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: '',
+      post: null,
+      comments: [],
       loading: false,
       error: false,
     };
   }
+
+  handleLocalAddComment = commentInfo => {
+    const currentComments = this.state.comments;
+    const comment = {
+      ...commentInfo,
+      _id: uuid(),
+    };
+    console.log(comment);
+    this.setState(prevState => ({
+      comments: [...currentComments, comment],
+    }));
+  };
+
   componentDidMount() {
     const postID = this.props.match.params.id;
     this.props.fetchOnePost(postID);
   }
   componentWillReceiveProps(nextProps) {
     const post = nextProps.posts.post;
+    let comments;
+    post && (comments = post.comments);
     const loading = nextProps.posts.loading;
     const error = nextProps.posts.error;
 
@@ -25,6 +42,7 @@ export class PostContainer extends Component {
       post,
       loading,
       error,
+      comments,
     }));
   }
   render() {
@@ -33,8 +51,10 @@ export class PostContainer extends Component {
         <h1>post container</h1>
         <Post
           post={this.state.post}
+          comments={this.state.comments}
           error={this.state.error}
           loading={this.state.loading}
+          handleLocalAdd={this.handleLocalAddComment}
         />
       </div>
     );
