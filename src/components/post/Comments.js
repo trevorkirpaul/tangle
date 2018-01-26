@@ -52,10 +52,10 @@ export const Comments = ({
     );
   } else {
     return (
-      <div>
-        <h3>Comments:</h3>
+      <Wrapper>
+        <Title>Comments:</Title>
         <p>no comments</p>
-      </div>
+      </Wrapper>
     );
   }
 };

@@ -14,13 +14,22 @@ const LINK = styled(Link)`
   border-bottom: 1px solid coral;
 `;
 
-export const PostItem = ({ title, author, _id }) => {
+const Detail = styled.p`
+  font-size: 0.8em;
+`;
+
+export const PostItem = ({ title, author, _id, likes, dislikes, comments }) => {
   const { email } = author;
+  const commentCount = comments.length;
+  const likeCount = likes.length;
   return (
     <Wrapper>
       <p>
-        <LINK to={`/post/${_id}`}>{title}</LINK> by {email}
+        ({likeCount}) <LINK to={`/post/${_id}`}>{title}</LINK> by {email}
       </p>
+      <Detail>
+        {commentCount} {commentCount === 1 ? 'comment' : 'comments'}
+      </Detail>
     </Wrapper>
   );
 };
