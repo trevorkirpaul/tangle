@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POST, POST_FETCH_ONE } from '../config';
+import { POST, POST_FETCH_ONE, POST_LIKE, POST_REMOVE_LIKE } from '../config';
 
 export const fetchPosts = () => {
   return dispatch => {
@@ -54,6 +54,69 @@ export const fetchOnePost = postID => {
       });
   };
 };
+
+export const likePost = (token, postID) => {
+  return dispatch => {
+    dispatch({
+      type: 'POSTS:CLICKED_LIKED_POST',
+      error: false,
+      loading: true,
+    });
+    axios
+      .put(POST_LIKE, { token, postID })
+      .then(({ data }) => {
+        return dispatch({
+          type: 'POSTS:SUCCESFULLY_ADDED_LIKE',
+          loading: false,
+          error: false,
+          postLiked: !!data.post,
+        });
+      })
+      .catch(() => {
+        return dispatch({
+          type: 'POSTS:FAILED_ADDING_LIKE',
+          error: true,
+          loading: false,
+        });
+      });
+  };
+};
+
+export const removeLike = (token, postID) => {
+  return dispatch => {
+    dispatch({
+      type: 'POSTS:CLICKED_REMOVE_LIKE',
+      loading: true,
+      error: false,
+    });
+    axios
+      .put(POST_REMOVE_LIKE, { token, postID })
+      .then(({ data }) => {
+        return dispatch({
+          type: 'POSTS:SUCCESFULLY_REMOVED_LIKE',
+          loading: false,
+          error: false,
+          removedLike: !!data.post,
+        });
+      })
+      .catch(() => {
+        return dispatch({
+          type: 'POSTS:FAILED_REMOVING_LIKE',
+          loading: false,
+          error: true,
+        });
+      });
+  };
+};
+// dispatched after message alerting user
+// of their like/dislike has closed
+// this prevents the message from showing again
+// if the page is revisited
+export const resetLikeCheck = () => ({
+  type: 'POSTS:RESET_LIKE_CHECK',
+  removedLike: false,
+  postLiked: false,
+});
 
 // was considering this for
 // PostContainer.js' componentWillUnmount()

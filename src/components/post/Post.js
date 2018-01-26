@@ -3,6 +3,7 @@ import Progress from 'material-ui/CircularProgress';
 import PostDetails from './PostDetails';
 import Comments from './Comments';
 import AddCommentContainer from '../addComment/AddCommentContainer';
+import PostActions from './PostActions';
 
 export default ({
   post,
@@ -11,6 +12,9 @@ export default ({
   error,
   handleLocalAdd,
   handleLocalDelete,
+  handleAddLike,
+  handleRemoveLike,
+  userInfo,
 }) => {
   if (loading) {
     return (
@@ -23,6 +27,13 @@ export default ({
       <div>
         <PostDetails title={post.title} author={post.author} body={post.body} />
         <Comments comments={comments} handleLocalDelete={handleLocalDelete} />
+        <PostActions
+          postID={post._id}
+          handleAddLike={handleAddLike}
+          handleRemoveLike={handleRemoveLike}
+          userInfo={userInfo}
+          likes={post.likes}
+        />
         <AddCommentContainer
           postID={post._id}
           handleLocalAdd={handleLocalAdd}
