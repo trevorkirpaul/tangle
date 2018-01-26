@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../actions/posts';
+import TitlePanel from '../reusable/TitlePanel';
 import PostsList from './PostsList';
 
 export class PostsContainer extends Component {
@@ -29,7 +30,10 @@ export class PostsContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Posts</h1>
+        <TitlePanel
+          title="View Posts"
+          subTitle="A complete list of all posts"
+        />
         <PostsList
           loading={this.state.loading}
           posts={this.state.posts}

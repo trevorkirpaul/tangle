@@ -1,9 +1,13 @@
 import React from 'react';
+import TitlePanel from '../reusable/TitlePanel';
 
 export default () => {
   return (
     <div>
-      <h1>Welcome</h1>
+      <TitlePanel
+        title="A Simple Platform to Share Your Words"
+        subTitle="Create an account today!"
+      />
     </div>
   );
 };

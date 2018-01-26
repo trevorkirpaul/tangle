@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions/user_posts';
-
+import TitlePanel from '../reusable/TitlePanel';
 import CreatePostForm from './CreatePostForm';
 import LoadingModal from '../signIn/SignInLoading';
 // todo: change SignInLoading name to reusable component
@@ -89,7 +89,10 @@ export class CreatePostContainer extends Component {
   render() {
     return (
       <div>
-        <h2>create post</h2>
+        <TitlePanel
+          title="Create A Tangle"
+          subTitle="complete this form to create a post"
+        />
 
         <CreatePostForm
           value={this.state.post}
