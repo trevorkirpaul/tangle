@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POST_CREATE, POST_FETCH_ONE } from '../config';
+import { POST, POST_FETCH_ONE } from '../config';
 
 export const fetchPosts = () => {
   return dispatch => {
@@ -9,7 +9,7 @@ export const fetchPosts = () => {
       error: false,
     });
     axios
-      .get(POST_CREATE)
+      .get(POST)
       .then(({ data }) => {
         return dispatch({
           type: 'POSTS:RECIEVE_COMPLETE',

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POST_CREATE } from '../config';
+import { POST } from '../config';
 
 export const createPost = (token, post) => {
   return dispatch => {
@@ -9,7 +9,7 @@ export const createPost = (token, post) => {
       error: false,
     });
     axios
-      .post(POST_CREATE, { token, ...post })
+      .post(POST, { token, ...post })
       .then(({ data }) => {
         return dispatch({
           type: 'POSTS:SUCCESSFULLY_CREATED_POST',
