@@ -54,7 +54,6 @@ export class PostContainer extends Component {
   render() {
     return (
       <div>
-        <h1>post container</h1>
         <Post
           post={this.state.post}
           comments={this.state.comments}

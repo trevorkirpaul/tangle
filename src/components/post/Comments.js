@@ -1,7 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteComment } from '../../actions/comments';
-import RaisedButton from 'material-ui/RaisedButton';
+import styled from 'styled-components';
+import Comment from './Comment';
+
+const Wrapper = styled.div`
+  margin: 10px;
+  padding: 15px;
+  background: #e8e8e8;
+`;
+const Title = styled.h3`
+  font-family: 'Roboto', sans-serif;
+  color: #383838;
+  display: inline-block;
+  border-bottom: 2px solid coral;
+`;
+const List = styled.ul`
+  list-style: none;
+  margin: 10px;
+  padding: 15px;
+`;
 
 export const Comments = ({
   comments,
@@ -19,20 +37,18 @@ export const Comments = ({
   };
   if (comments.length > 0) {
     return (
-      <div>
-        <h3>Comments:</h3>
-        <ul>
+      <Wrapper>
+        <Title>Comments</Title>
+        <List>
           {comments.map(comment => (
-            <li key={comment._id}>
-              {comment.body}
-              <RaisedButton
-                label="Remove"
-                onClick={() => handleDelete(comment._id)}
-              />
-            </li>
+            <Comment
+              key={comment._id}
+              {...comment}
+              handleDelete={handleDelete}
+            />
           ))}
-        </ul>
-      </div>
+        </List>
+      </Wrapper>
     );
   } else {
     return (
