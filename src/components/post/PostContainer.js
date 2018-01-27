@@ -63,11 +63,12 @@ export class PostContainer extends Component {
     post && (comments = post.comments);
     const loading = nextProps.posts.loading;
     const error = nextProps.posts.error;
-    // snackbar
+
+    // SNACKBAR varaibles
     const postLiked = nextProps.posts.postLiked;
     const removedLike = nextProps.posts.removedLike;
 
-    // if user has preformed an action on post
+    // SNACKBAR: if user has preformed an action on post
     postLiked &&
       this.setState(() => ({ snackMessage: 'Liked Post', snackbarOpen: true }));
     removedLike &&
